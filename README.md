@@ -1,6 +1,6 @@
 # OnlineShoppingSystem
 
-The Online Shopping System is a Java-based desktop application designed to streamline the process of buying and selling goods. \n Users can explore various product categories, add items to their cart, and place orders efficiently. The system incorporates essential features like user registration, order management, and feedback submission.
+The Online Shopping System is a Java-based desktop application designed to streamline the process of buying and selling goods. <br> Users can explore various product categories, add items to their cart, and place orders efficiently. The system incorporates essential features like user registration, order management, and feedback submission.
 
 ## Table of Contents
 
