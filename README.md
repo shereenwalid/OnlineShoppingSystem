@@ -9,8 +9,6 @@ The Online Shopping System is a Java-based desktop application designed to strea
 - [How to Run](#how-to-run)
 - [Usage](#usage)
 - [Design Patterns](#design-patterns)
-- [Database](#database)
-- [Resources](#resources)
 - [License](#license)
 
 ## Features
@@ -64,61 +62,6 @@ java Interface.CategorySelectionPage
 
 - **Proxy Pattern:** Authenticates users during login, redirecting based on roles.
 - **Factory Pattern:** Creates category objects.
-
-## Database
-
-### Tables
-
-- **User Table:**
-  - userID
-  - Fname
-  - Lname
-  - ssn
-  - Email
-  - password
-
-- **CreditCard Table:**
-  - userID
-  - cardNumber
-  - CVV
-  - Balance
-  - ExpiryDate
-
-- **Categories Table:**
-  - CategoryID
-  - Name
-
-- **Items Table:**
-  - ItemID
-  - ItemName
-  - price
-  - amount
-  - salePercent
-  - CategoryID
-
-- **Cart Table:**
-  - CartID
-  - UserID
-  - ItemID
-  - Quantity
-
-- **Orders Table:**
-  - OrderID
-  - UserID
-  - ItemID
-  - Quantity
-  - Total
-
-- **Feedback Table:**
-  - UserID
-  - ItemID
-  - Feedback
-
-## Resources
-
-- [Swing Tutorial](https://www.youtube.com/watch?v=Kmgo00avvEw)
-- [MySQL to IntelliJ Tutorial](https://www.youtube.com/watch?v=E90z9Qw8cHQ)
-- [PlantText for UML](https://www.planttext.com/)
 
 ## License
 
