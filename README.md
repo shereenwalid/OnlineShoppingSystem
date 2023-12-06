@@ -67,4 +67,3 @@ java Interface.CategorySelectionPage
 
 This project is licensed under the [MIT License](LICENSE).
 
-add here admin functionalities also
