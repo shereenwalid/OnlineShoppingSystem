@@ -1,0 +1,72 @@
+# User Authentication Proxy Pattern
+
+```bash
+---
+
+---
+
+// call function in interface 
+interface IUser {
+    void login(String email);
+}
+
+// Import Interface package to access the pages
+class Admin implements User {
+    public void login(String email) {
+        System.out.println("Admin logged in with email: " + email);
+        openDashboardPage();
+    }
+}
+
+class Buyer implements User {
+    public void login(String email) {
+        System.out.println("Buyer logged in with email: " + email);
+        openBrowsingPage();
+    }
+    public void Register(data){
+        openRegisterPage(//will take the user to browsing page);
+    }
+}
+
+// Proxy class
+class UserProxy implements User {
+    private User realUser;
+    private String email;
+
+    public UserProxy(String email) {
+        this.email = email;
+    }
+
+    // call function in interface 
+    public void login(String email) {
+        // Check if the user is in the database
+        if (databaseContainsUser(email)) {
+            String userType = getUserRole(email);
+            if ("admin".equals(UserRole)){
+                realUser = new Admin();
+            } else if ("buyer".equals(UserRole)) {
+                realUser = new Buyer();
+            } else {
+                realUser = new Buyer();
+                realUser.Register(//Data);
+            }
+            // Forward the login to the real user
+            realUser.login(email);
+        } else {
+            System.out.println("User not found in the database.");
+        }
+    }
+
+    private boolean databaseContainsUser(String email) {
+        // Check if the user is in the database
+        // Implement your logic here
+        return true;
+    }
+
+    private String getUserType(String email) {
+        // Get the user type from the database
+        // Implement your logic here
+        return "buyer";
+    }
+}
+```
