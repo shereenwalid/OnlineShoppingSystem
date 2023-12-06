@@ -1,6 +1,6 @@
+# User Authentication Proxy Pattern
 
-```java
-// call function in interface 
+
 interface IUser {
     void login(String email);
 }
@@ -64,4 +64,3 @@ class UserProxy implements User {
         return "buyer";
     }
 }
-```
