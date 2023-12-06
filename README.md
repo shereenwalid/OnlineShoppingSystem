@@ -1,9 +1,6 @@
-Certainly! I understand now. Let's add a section on how an admin can navigate through the system. I'll include a simple overview of the admin functionalities and navigation.
-
-```markdown
 # OnlineShoppingSystem
 
-The Online Shopping System is a Java-based desktop application designed to streamline the process of buying and selling goods. Users can explore various product categories, add items to their cart, and place orders efficiently. The system incorporates essential features like user registration, order management, and feedback submission.
+The Online Shopping System is a Java-based desktop application designed to streamline the process of buying and selling goods. <br> Users can explore various product categories, add items to their cart, and place orders efficiently. <br> The system incorporates essential features like user registration, order management, and feedback submission.
 
 ## Table of Contents
 
@@ -12,8 +9,6 @@ The Online Shopping System is a Java-based desktop application designed to strea
 - [How to Run](#how-to-run)
 - [Usage](#usage)
 - [Design Patterns](#design-patterns)
-- [Admin Functionalities](#admin-functionalities)
-- [Admin Navigation](#admin-navigation)
 - [License](#license)
 
 ## Features
@@ -68,39 +63,8 @@ java Interface.CategorySelectionPage
 - **Proxy Pattern:** Authenticates users during login, redirecting based on roles.
 - **Factory Pattern:** Creates category objects.
 
-## Admin Functionalities
-
-- **Add New Category:** Admins can add a new product category.
-- **Edit Category:** Admins can edit the details of existing product categories.
-- **Delete Category:** Admins can delete unnecessary product categories.
-- **Add New Items:** Admins can add new items to the system, specifying details and images.
-- **Check Items in Stock:** Admins can check the availability of items in stock.
-- **Add Sale for Items:** Admins can apply discounts or sales to specific items.
-- **Calculate Total Receipt:** Admins can calculate the total receipt for an order.
-- **Delete User:** Admins can delete user accounts.
-- **Check Credit Card:** Admins can verify credit card information.
-- **Show All Orders in Period Time:** Admins can view all orders within a specified time period.
-
-## Admin Navigation
-
-To navigate through the admin functionalities, follow these steps:
-
-1. **Login as Admin:**
-   - Provide admin credentials during the login process.
-
-2. **Access Admin Dashboard:**
-   - After successful login, the system will redirect you to the admin dashboard.
-   - From the dashboard, you can access various admin functionalities through a menu or buttons.
-
-3. **Navigate Admin Functionalities:**
-   - Use the provided navigation menu or buttons to access specific admin functionalities such as adding items, managing categories, and viewing orders.
-
-4. **Logout:**
-   - Always log out after completing admin tasks to ensure security.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
 
-This section now includes a brief overview of how an admin can navigate through the system after logging in. Adjust this based on the actual navigation design in your application.
+add here admin functionalities also
