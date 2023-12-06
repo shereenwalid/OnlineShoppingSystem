@@ -1,6 +1,3 @@
-# User Authentication Proxy Pattern
-
-
 interface IUser {
     void login(String email);
 }
