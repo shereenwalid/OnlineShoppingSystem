@@ -51,13 +51,11 @@ class UserProxy implements User {
 
     private boolean databaseContainsUser(String email) {
         // Check if the user is in the database
-        // Implement your logic here
         return true;
     }
 
     private String getUserType(String email) {
         // Get the user type from the database
-        // Implement your logic here
         return "buyer";
     }
 }
