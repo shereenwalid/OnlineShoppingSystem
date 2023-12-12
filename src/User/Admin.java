@@ -16,4 +16,6 @@ public class Admin extends IUser {
 //        Dashboard d = new Dashboard();
 
     }
+
+  // Use removeProduct(String itemName) to remove product from registery by name
 }
