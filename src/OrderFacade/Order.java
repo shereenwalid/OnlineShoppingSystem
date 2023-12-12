@@ -65,6 +65,7 @@ public class Order {
     /**
      * Delete the order if it's not older than one day since acceptance.
      */
+    // when we press on order it will pass the orderID ro delete
     public void deleteOrder() {
         try {
             // Delete the order from the database
@@ -105,6 +106,7 @@ public class Order {
      *
      * @param item The item to delete.
      */
+    // Pass item name not item and delete from db
     public void deleteOrderItem(A_Item item) {
 
         try {
