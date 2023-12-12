@@ -12,7 +12,8 @@ public class Admin extends IUser {
     }
     @Override
     public void login(String UserName, String password) {
-        // will use the UserName for hello msg
+        // will use the UserName for a hello msg
+        // Dashboard has 2 buttons 1 for categories & other for items each take to the respective page
 //        Dashboard d = new Dashboard();
 
     }
