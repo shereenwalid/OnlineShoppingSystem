@@ -165,12 +165,11 @@ public class ItemDetailsPage extends JFrame {
 
     private void submitFeedback(String feedback) {
         System.out.println("Feedback submitted: " + feedback);
-        // Implement logic for submitting feedback to the system
+        // Implement logic for submitting feedback to the system after finishing buyer class
     }
 
     private void addToCart() {
         shoppingCart.addItem(item);
         System.out.println("Item added to cart: " + item.getItemName());
-        // Implement logic for adding the item to the shopping cart
     }
 }
