@@ -68,7 +68,7 @@ public class ProxyUser extends IUser {
                 buyer.login(Fname, password);
             }
         } else {
-            // if not in DB register as buyer
+            // if not in DB register as buyer instantiate card obj and pass to the user
 //            BuyerRegister(Fname, Lname, ssn, email, password, Role, CardNumber, Cvv, Balance, ExpiryDate.toLocalDate());
         }
     }
