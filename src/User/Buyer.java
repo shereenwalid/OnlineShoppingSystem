@@ -77,24 +77,24 @@ public class Buyer extends IUser {
                 this.card = card;
         }
 
-        //
-        //        public <any> getCarts() {
-        //            return carts;
-        //        }
-        //
-        //
-        //        public <any> getOrders() {
-        //            return Orders;
-        //        }
-
-        //        public void setCarts(<any> carts) {
-        //            this.carts = carts;
-        //        }
-        //
-        //
-        //        public void setOrders(<any> Orders) {
-        //            this.Orders = Orders;
-        //        }
+//
+//                public <any> getCarts() {
+//                    return carts;
+//                }
+//
+//
+//                public <any> getOrders() {
+//                    return Orders;
+//                }
+//
+//                public void setCarts(<any> carts) {
+//                    this.carts = carts;
+//                }
+//
+//
+//                public void setOrders(<any> Orders) {
+//                    this.Orders = Orders;
+//                }
 
         @Override
         public void login(String UserName, String password) {
