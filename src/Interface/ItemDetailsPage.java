@@ -9,12 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ItemDetailsPage extends JFrame {
-    private ItemsDisplayPage itemsDisplayPage;
+    private CategorySelectionPage categoryPage;
     private A_Item item;
     private Buyer user;
 
     public ItemDetailsPage(Buyer user, A_Item item) {
-        this.itemsDisplayPage = itemsDisplayPage;
         this.item = item;
         this.user = user;
 
@@ -148,7 +147,8 @@ public class ItemDetailsPage extends JFrame {
 
     private void goBack() {
         setVisible(false);
-        itemsDisplayPage.setVisible(true);
+        categoryPage = new CategorySelectionPage(user);
+        categoryPage.setVisible(true);
     }
 
     private void submitFeedback(String feedback) {
