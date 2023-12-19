@@ -37,11 +37,8 @@ public class ProxyUser extends IUser {
                 if (role.equals("Admin")) {
                     AdminMap.put(Fname, new Admin(userID, Fname, Lname, ssn, email, password, role));
                 } else {
-                    // Instantiate a Creditcard object
                     Creditcard card = new Creditcard(userID, cardNumber, CVV);
-                    // Instantiate a Buyer object and pass the Creditcard object
                     Buyer buyer = new Buyer(userID, Fname, Lname, ssn, email, password, role, card);
-                    // Put the Buyer object in the BuyerMap
                     BuyerMap.put(Fname, buyer);
                 }
             }
@@ -51,7 +48,6 @@ public class ProxyUser extends IUser {
     }
 
 
-    // For testing convert to Buyer not void
     @Override
     public void login(String Fname, String password) {
         if (AdminMap.containsKey(Fname)) {
@@ -75,9 +71,7 @@ public class ProxyUser extends IUser {
                               String CardNumber, String Cvv) {
         try {
             String insertQuery = "INSERT INTO User (Fname, Lname, ssn, email, password, Role) VALUES (?, ?, ?, ?, ?, ?)";
-            // To return any auto-generated keys after the execution of the query
             try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
-                // Set parameters for the new buyer
                 insertStatement.setString(1, Fname);
                 insertStatement.setString(2, Lname);
                 insertStatement.setString(3, ssn);
@@ -85,26 +79,19 @@ public class ProxyUser extends IUser {
                 insertStatement.setString(5, password);
                 insertStatement.setString(6, Role);
 
-                // Execute the insertion
                 int rowsAffected = insertStatement.executeUpdate();
 
-                // Check if the insertion was successful
                 if (rowsAffected > 0) {
-                    // Retrieve the generated keys auto-increment ID column
                     try (ResultSet generatedKeys = insertStatement.getGeneratedKeys()) {
                         if (generatedKeys.next()) {
                             int newBuyerID = generatedKeys.getInt(1);
 
-                            // Create a new Creditcard object
                             Creditcard card = new Creditcard(newBuyerID, CardNumber, Cvv);
 
-                            // Create a new Buyer object
                             Buyer newBuyer = new Buyer(newBuyerID, Fname, Lname, ssn, email, password, Role,card);
 
-                            // Add the new buyer to the BuyerMap
                             BuyerMap.put(Fname, newBuyer);
 
-                            // Insert the new card information into the CreditCard table
                             insertCardIntoDatabase(card);
 
                             System.out.println("Buyer registered successfully with a new card.");
@@ -118,24 +105,18 @@ public class ProxyUser extends IUser {
             e.printStackTrace();
         }
 
-        // Call the login method with the provided credentials
         login(Fname, password);
     }
 
-    // Method to insert card information into the database
     private void insertCardIntoDatabase(Creditcard card) {
         try {
             String insertCardQuery = "INSERT INTO CreditCard (userID, cardNumber, CVV) VALUES (?, ?,?)";
             try (PreparedStatement insertCardStatement = connection.prepareStatement(insertCardQuery)) {
-                // Set parameters for the new card
                 insertCardStatement.setInt(1, card.getUserID());
                 insertCardStatement.setString(2, card.getCardNumber());
                 insertCardStatement.setString(3, card.getCvv());
 
-                // Execute the insertion
                 int rowsAffected = insertCardStatement.executeUpdate();
-
-                // Check if the insertion was successful
                 if (rowsAffected > 0) {
                     System.out.println("Card information inserted into the database successfully.");
                 } else {
