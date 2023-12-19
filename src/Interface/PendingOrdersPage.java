@@ -34,14 +34,13 @@ public class PendingOrdersPage extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Call display pending orders
+
         this.userOrders = user.displayPendingOrders();
         displayPendingOrders();
 
         JButton backButton = new JButton("Back");
         backButton.addActionListener(e -> goBackToBuyerMainPage());
 
-        // Put back button at the south of the page
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
@@ -54,27 +53,22 @@ public class PendingOrdersPage extends JFrame {
             int orderID = entry.getKey();
             Map<Integer, String> itemMap = entry.getValue();
 
-            // Create a panel for each order
             JPanel orderPanel = new JPanel(new BorderLayout());
 
-            // Create a label for the order ID and add it to the order panel
             JLabel orderLabel = new JLabel("Order ID: " + orderID);
             orderPanel.add(orderLabel, BorderLayout.NORTH);
 
-            // Create a panel for the items
             JPanel itemPanel = new JPanel(new GridLayout(0, 1));
 
             for (Map.Entry<Integer, String> itemEntry : itemMap.entrySet()) {
                 int itemID = itemEntry.getKey();
                 String itemName = itemEntry.getValue();
 
-                // Create a panel for each item with a cancel button
                 JPanel itemRowPanel = new JPanel(new BorderLayout());
 
                 JLabel itemLabel = new JLabel("   Item ID: " + itemID + ", Item Name: " + itemName);
                 itemRowPanel.add(itemLabel, BorderLayout.WEST);
 
-                // Create a cancel button for the item
                 JButton cancelButton = new JButton("Cancel Item");
                 cancelButton.addActionListener(e -> {
                     try {
@@ -89,10 +83,8 @@ public class PendingOrdersPage extends JFrame {
                 itemPanel.add(itemRowPanel);
             }
 
-            // Add the item panel to the order panel
             orderPanel.add(itemPanel, BorderLayout.CENTER);
 
-            // Create a cancel button for the order
             JButton cancelButton = new JButton("Cancel Order");
             cancelButton.addActionListener(e -> {
                 try {
@@ -103,17 +95,13 @@ public class PendingOrdersPage extends JFrame {
                 }
             });
 
-            // Add the cancel button to the order panel
             orderPanel.add(cancelButton, BorderLayout.SOUTH);
 
-            // Add the order panel to the orders panel
             ordersPanel.add(orderPanel);
 
-            // Add a separator between orders
             ordersPanel.add(new JSeparator(SwingConstants.HORIZONTAL));
         }
 
-        // Use a scroll pane in case there are many orders
         JScrollPane scrollPane = new JScrollPane(ordersPanel);
         add(scrollPane, BorderLayout.CENTER);
     }
