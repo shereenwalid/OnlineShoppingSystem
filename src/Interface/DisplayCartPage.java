@@ -209,27 +209,22 @@ public class DisplayCartPage extends JFrame {
     }
 
     private void submitOrder() {
-        // Prompt the user to enter CVV and Card Number
         String cardNumber = JOptionPane.showInputDialog(this, "Enter Card Number:");
         String cvv = JOptionPane.showInputDialog(this, "Enter CVV:");
 
         System.out.println("Entered Card Number: " + cardNumber);
         System.out.println("Entered CVV: " + cvv);
 
-        // Check if the user canceled the input
         if ((orderFacade.placeOrder(cvv, cardNumber, user.getUserID(), (int) user.getOrder().getReceipt().getTotal(), user.getOrder().getOrder().getDeliveryDuration(), user.getOrder().getOrder().getCart()))) {
-            // Display a thank you and confirmation message
+
             JOptionPane.showMessageDialog(this, "Thank you for your order! Your order has been submitted successfully.",
                     "Order Submitted", JOptionPane.INFORMATION_MESSAGE);
 
-            // Clear the shopping cart after submitting the order
             shoppingCart.clearCart();
 
-            // Take the user back to the category selection page
             CategorySelectionPage categorySelectionPage = new CategorySelectionPage(user);
             categorySelectionPage.setVisible(true);
 
-            // Close the current window
             setVisible(false);
             dispose();
         } else {
@@ -252,10 +247,8 @@ public class DisplayCartPage extends JFrame {
 
 
     private void goBackToItemsDisplayPage() {
-        // Create a new instance of ItemsDisplayPage and make it visible
         page.setVisible(true);
 
-        // Close the current window
         setVisible(false);
         dispose();
     }
