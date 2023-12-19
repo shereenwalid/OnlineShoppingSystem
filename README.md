@@ -36,11 +36,11 @@ The Online Shopping System is a Java-based desktop application designed to strea
 1. Ensure you have the Java Development Kit (JDK) installed on your system.
 2. Clone the repository to your local machine.
 3. Set up the MySQL database with the provided schema.
-4. Compile and run the `CategorySelectionPage.java` file to start the application.
+4. Compile and run the `Login.java` file to start the application.
 
 ```bash
-javac Interface/CategorySelectionPage.java
-java Interface.CategorySelectionPage
+javac Interface/Login.java
+java Interface.Login
 ```
 
 ## Usage
