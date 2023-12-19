@@ -17,7 +17,7 @@ public class ProfilePage extends JFrame {
 //    private JTextField balanceField;
 //    private JTextField expiryDateField;
     Buyer buyer;
-//    To update information
+
 public ProfilePage(Buyer buyer) {
     JPanel navbar = new JPanel();
     navbar.setBackground(Color.white);
@@ -33,7 +33,6 @@ public ProfilePage(Buyer buyer) {
     setTitle("Profile Page");
     setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    // Center the frame on the screen
     setLocationRelativeTo(null);
 
     JPanel panel = new JPanel();
