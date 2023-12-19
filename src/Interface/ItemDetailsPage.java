@@ -14,7 +14,6 @@ public class ItemDetailsPage extends JFrame {
     private Buyer user;
 
     public ItemDetailsPage(Buyer user, A_Item item) {
-        // Your existing constructor code
         this.itemsDisplayPage = itemsDisplayPage;
         this.item = item;
         this.user = user;
