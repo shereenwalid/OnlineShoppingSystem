@@ -1,10 +1,3 @@
-//package User;
-//
-//public class Admin  {
-//
-
-//}
-
 package User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
