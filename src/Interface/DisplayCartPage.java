@@ -1,4 +1,4 @@
-// DisplayCartPage.java
+
 package Interface;
 
 import Factory.Item.A_Item;
