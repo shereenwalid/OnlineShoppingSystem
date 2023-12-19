@@ -40,6 +40,7 @@ public class DisplayCartPage extends JFrame {
         // set order facade for user
         this.user.setOrder(orderFacade);
         this.user.getOrder().setBuyer(user);
+        
         // set order for order facade
         this.user.getOrder().setOrder(order);
 
@@ -62,25 +63,25 @@ public class DisplayCartPage extends JFrame {
         JButton submitOrderButton = createSubmitOrderButton();
         JButton backButton = createBackButton();
 
-// Create a panel for buttons and set its layout to FlowLayout
+
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
-// Add the buttons to the buttonPanel
+
         buttonPanel.add(submitOrderButton);
         buttonPanel.add(backButton);
 
-// Create the main panel and add components
+
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(navbar, BorderLayout.NORTH);
         mainPanel.add(cartItemsPanel, BorderLayout.CENTER);
         mainPanel.add(paymentPanel, BorderLayout.SOUTH);
 
-// Create the southPanel and add the mainPanel and buttonPanel
+
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(mainPanel, BorderLayout.NORTH);
         southPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-// Add the southPanel to the JFrame
+
         add(southPanel);
 
 
@@ -126,7 +127,7 @@ public class DisplayCartPage extends JFrame {
         JLabel priceLabel = new JLabel("<html><b>$" + item.getPrice() + "</b></html>");
         priceLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 
-        // Display the image
+       
         String imagePath = "images/" + item.getItemName() + ".jpeg";
         ImageIcon icon = new ImageIcon(imagePath);
         Image scaledImage = icon.getImage().getScaledInstance(100, 150, Image.SCALE_SMOOTH);
@@ -184,16 +185,12 @@ public class DisplayCartPage extends JFrame {
     }
 
     private void updateCartItemsPanel() {
-            // Remove all components from the current JFrame
+            // Remove all components 
             getContentPane().removeAll();
-
             // Recreate the DisplayCartPage with the updated ShoppingCart
             DisplayCartPage updatedCartPage = new DisplayCartPage(user);
 
-            // Make the updated page visible
             updatedCartPage.setVisible(true);
-
-            // Dispose the current JFrame
             dispose();
     }
 
