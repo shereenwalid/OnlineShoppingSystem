@@ -190,7 +190,7 @@ public class Buyer extends IUser {
 }
 
 
-//// Basmala update info code
+
 //        public void updatePersonalInfo() {
 //                String query = "UPDATE users SET firstName = ?, lastName = ?, email = ? WHERE userID = ?";
 //                try (PreparedStatement statement = connection.prepareStatement(query)) {

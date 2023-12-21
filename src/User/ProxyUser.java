@@ -127,6 +127,52 @@ public class ProxyUser extends IUser {
             e.printStackTrace();
         }
     }
+    public void updatePersonalInfo(String newFirstName, String newLastName, String newEmail, String newPassword,
+                                   String newCardNumber, String newCvv) {
+        String query = "UPDATE users SET firstName = ?, lastName = ?, email = ?, password = ? WHERE userID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, newFirstName);
+            statement.setString(2, newLastName);
+            statement.setString(3, newEmail);
+            statement.setString(4, newPassword);
+            statement.setInt(5, UserID);
+
+            // Execute the query
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Personal information updated successfully.");
+            } else {
+                System.out.println("Failed to update personal information. Please try again.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Update card information
+        updateCardInfo(newCardNumber, newCvv);
+    }
+
+    public void updateCardInfo(String newCardNumber, String newCvv) {
+        String cardQuery = "UPDATE CreditCard SET cardNumber = ?, CVV = ? WHERE userID = ?";
+        try (PreparedStatement cardStatement = connection.prepareStatement(cardQuery)) {
+            cardStatement.setString(1, newCardNumber);
+            cardStatement.setString(2, newCvv);
+            cardStatement.setInt(3, UserID);
+
+            // Execute the query
+            int rowsAffected = cardStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Card information updated successfully.");
+            } else {
+                System.out.println("Failed to update card information. Please try again.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 

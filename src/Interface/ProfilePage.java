@@ -141,8 +141,8 @@ public ProfilePage(Buyer buyer) {
 
 
                 ProxyUser proxyUser = new ProxyUser();
-                //  proxyUser.updatePersonalInfo(firstName, lastName, email, password);
-                //  proxyUser.updateCardInfo(cardNumber, cvv, balance, expiryDate);
+                proxyUser.updatePersonalInfo(firstName, lastName, email, password, cardNumber, cvv);
+                proxyUser.updateCardInfo(cardNumber,cvv);
 
                 JOptionPane.showMessageDialog(null, "Profile updated successfully!");
             }
