@@ -14,11 +14,9 @@ public class ProfilePage extends JFrame {
     private JPasswordField passwordField;
     private JTextField cardNumberField;
     private JTextField cvvField;
-    //    private JTextField balanceField;
-//    private JTextField expiryDateField;
     Buyer buyer;
     Creditcard creditcard;
-    //    To update information
+
     public ProfilePage(Buyer buyer) {
         JPanel navbar = new JPanel();
         navbar.setBackground(Color.white);
@@ -29,13 +27,11 @@ public class ProfilePage extends JFrame {
         navbar.add(appNameLabel);
         add(navbar, BorderLayout.NORTH);
 
-
         this.buyer = buyer;
         creditcard = buyer.getCard();
         setTitle("Profile Page");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Center the frame on the screen
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
@@ -96,26 +92,9 @@ public class ProfilePage extends JFrame {
         cvvField.setBounds(100, 170, 165, 25);
         panel.add(cvvField);
 
-//        JLabel balanceLabel = new JLabel("Balance:");
-//        balanceLabel.setBounds(10, 200, 80, 25);
-//        panel.add(balanceLabel);
-//
-//        balanceField = new JTextField(20);
-//        balanceField.setBounds(100, 200, 165, 25);
-//        panel.add(balanceField);
-//
-//        JLabel expiryDateLabel = new JLabel("Expiry Date:");
-//        expiryDateLabel.setBounds(10, 230, 80, 25);
-//        panel.add(expiryDateLabel);
-//
-//        expiryDateField = new JTextField(20);
-//        expiryDateField.setBounds(100, 230, 165, 25);
-//        panel.add(expiryDateField);
-
         JButton updateButton = new JButton("Update Profile");
         updateButton.setBounds(10, 260, 140, 25);
         panel.add(updateButton);
-
 
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
@@ -124,11 +103,9 @@ public class ProfilePage extends JFrame {
                 goBackToBuyerMainPage();
             }
         });
-        // Put back button at the south of the page
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(backButton);
         add(buttonPanel, BorderLayout.SOUTH);
-
 
         updateButton.addActionListener(new ActionListener() {
             @Override
@@ -137,31 +114,39 @@ public class ProfilePage extends JFrame {
                 String lastName = lastNameField.getText();
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
-                int cardNumber = Integer.parseInt(cardNumberField.getText());
-                int cvv = Integer.parseInt(cvvField.getText());
-//                double balance = Double.parseDouble(balanceField.getText());
-//                String expiryDate = expiryDateField.getText();
 
+                int cardNumber = 0;
+                int cvv = 0;
 
-                buyer.setFname(firstName,buyer.getUserID());
-                buyer.setLname(lastName,buyer.getUserID());
+                try {
+                    if (!cardNumberField.getText().isEmpty()) {
+                        cardNumber = Integer.parseInt(cardNumberField.getText());
+                    }
+
+                    if (!cvvField.getText().isEmpty()) {
+                        cvv = Integer.parseInt(cvvField.getText());
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Card number and CVV must be valid integers.");
+                    return;
+                }
+
+                buyer.setFname(firstName, buyer.getUserID());
+                buyer.setLname(lastName, buyer.getUserID());
                 buyer.setemail(email, buyer.getUserID());
                 buyer.setpassword(password, buyer.getUserID());
                 creditcard.setcardNumber(cardNumber, buyer.getUserID());
                 creditcard.setcvv(cvv, buyer.getUserID());
-
-//                ProxyUser proxyUser = new ProxyUser();
-//                proxyUser.updatePersonalInfo(firstName, lastName, email, password, cardNumber, cvv);
-//                proxyUser.updateCardInfo(cardNumber,cvv);
 
                 JOptionPane.showMessageDialog(null, "Profile updated successfully!");
             }
         });
     }
 
-
     private void goBackToBuyerMainPage() {
         new BuyerMainPage(buyer).setVisible(true);
         dispose();
     }
+
+
 }
