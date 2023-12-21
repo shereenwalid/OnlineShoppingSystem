@@ -135,22 +135,38 @@ public class Buyer extends IUser {
         //        private List<Order> Orders;
 
         public void browseCategories() {
-
+          System.out.println("Here are the available categories:");
+            System.out.println("1. Electronics");
+               System.out.println("2. Books");
+   
         }
 
-        public void addToCart() {
-
+        public void addToCart(Item item) {
+            cart.additem(item);
         }
 
         public void CancelOrder() {
-
+          Orders.deleteOrder();
         }
         public void GetFeedBack() {
-
+          feedback.GetFeedBack();
         }
 
-        public void updatePersonalInfo() {
+        public void updatePersonalInfo(String fname, String lname, String ssn) {
+            if (fname != null) 
+       {
+           this.fname = fname;
+       }
+       
+       if (lname != null) 
+       {
+           this.lname = lname;
+       }
 
+        if (ssn != null) 
+       {
+           this.ssn = ssn;
+       }
         }
 
         public void setCard(Creditcard card) {
