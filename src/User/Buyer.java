@@ -19,6 +19,8 @@ import static User.ProxyUser.BuyerMap;
 public class Buyer extends IUser {
 
         private static Connection connection = DataBaseConnection.getConnection();
+
+        String Fname;
         Creditcard card;
         Creditcard Regcard;
         Buyer registeredBuyer;
@@ -27,6 +29,9 @@ public class Buyer extends IUser {
         ShoppingCart cart;
         Receipt receipt;
         Map<Integer, Map<Integer, String>> ordersMap = new HashMap<>();
+
+
+
         private Buyer buyer;
 
         public Buyer(int userID, String fname, String lname, String ssn, String email, String password, String Role,Creditcard card) {
@@ -42,6 +47,8 @@ public class Buyer extends IUser {
 
         }
 
+
+
         @Override
         public void login(String UserName, String password) {
                 buyer = (Buyer) BuyerMap.get(UserName);
@@ -49,6 +56,22 @@ public class Buyer extends IUser {
                 BuyerMainPage page = new BuyerMainPage(this.buyer);
                 page.setVisible(true);
         }
+
+        public void setFname(String Fname, int id) {
+                try {
+                        String updateQuery = "UPDATE User SET Fname = ? WHERE userID = ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                                preparedStatement.setString(1, Fname);
+                                preparedStatement.setInt(2, id);
+
+                                int rowsAffected = preparedStatement.executeUpdate();
+                        }
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
+
+
 
         public Map<Integer, Map<Integer, String>> displayPendingOrders() {
                 String selectQuery = "SELECT O.OrderID, OI.ItemName, OI.ItemID FROM Orders AS O JOIN OrderItems AS OI ON O.OrderID = OI.OrderID WHERE O.UserID = ?;";
@@ -111,12 +134,10 @@ public class Buyer extends IUser {
 
         public void LeaveFeedback(int userID, int itemID, String feedback) {
                 String insertQuery = "INSERT INTO Feedback (UserID, ItemID, FeedBack) VALUES (?, ?, ?)";
-
                 try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                         preparedStatement.setInt(1, userID);
                         preparedStatement.setInt(2, itemID);
                         preparedStatement.setString(3, feedback);
-
                         int rowsAffected = preparedStatement.executeUpdate();
 
                         if (rowsAffected > 0) {
@@ -126,73 +147,14 @@ public class Buyer extends IUser {
                         }
                 } catch (SQLException e) {
                         e.printStackTrace();
-                        // Handle the exception as needed
                 }
         }
 
-        // Setters for update information
-        // to dipslay and delete if he wants
-        //        private List<Order> Orders;
-
-        public void browseCategories() {
-          System.out.println("Here are the available categories:");
-            System.out.println("1. Electronics");
-               System.out.println("2. Books");
-   
-        }
-
-        public void addToCart(Item item) {
-            cart.additem(item);
-        }
-
-        public void CancelOrder() {
-          Orders.deleteOrder();
-        }
-        public void GetFeedBack() {
-          feedback.GetFeedBack();
-        }
-
-        public void updatePersonalInfo(String fname, String lname, String ssn) {
-            if (fname != null) 
-       {
-           this.fname = fname;
-       }
-       
-       if (lname != null) 
-       {
-           this.lname = lname;
-       }
-
-        if (ssn != null) 
-       {
-           this.ssn = ssn;
-       }
-        }
 
         public void setCard(Creditcard card) {
                 this.card = card;
         }
 
-        //
-        //        public <any> getCarts() {
-        //            return carts;
-        //        }
-        //
-        //
-        //        public <any> getOrders() {
-        //            return Orders;
-        //        }
-
-        //        public void setCarts(<any> carts) {
-        //            this.carts = carts;
-        //        }
-        //
-        //
-        //        public void setOrders(<any> Orders) {
-        //            this.Orders = Orders;
-        //        }
-
-//        public static Map< String, IUser > BuyerMap;
 
 
         public void leaveFeedback(){
@@ -203,6 +165,9 @@ public class Buyer extends IUser {
         public Creditcard getCard() {
                 return card;
         }
+
+
+
 }
 
 
