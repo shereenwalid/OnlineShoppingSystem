@@ -17,6 +17,7 @@ public class ProfilePage extends JFrame {
 //    private JTextField balanceField;
 //    private JTextField expiryDateField;
     Buyer buyer;
+    Creditcard creditcard;
 //    To update information
 public ProfilePage(Buyer buyer) {
     JPanel navbar = new JPanel();
@@ -142,6 +143,12 @@ public ProfilePage(Buyer buyer) {
 
 
                 buyer.setFname(firstName,buyer.getUserID());
+                buyer.setLname(lastName,buyer.getUserID());
+                buyer.setemail(email, buyer.getUserID());
+                buyer.setpassword(password, buyer.getUserID());
+                creditcard.setcardNumber(cardNumber, creditcard.getUserID());
+                creditcard.setcvv(cvv, creditcard.getUserID());
+
 //                ProxyUser proxyUser = new ProxyUser();
 //                proxyUser.updatePersonalInfo(firstName, lastName, email, password, cardNumber, cvv);
 //                proxyUser.updateCardInfo(cardNumber,cvv);

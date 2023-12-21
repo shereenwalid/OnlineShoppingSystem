@@ -1,10 +1,16 @@
 package User;
 
+import Database.DataBaseConnection;
+
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.Temporal;
 
 public class Creditcard {
+    private static Connection connection = DataBaseConnection.getConnection();
     private int userID;
     private String CardNumber;
     private String Cvv;
@@ -56,6 +62,33 @@ public class Creditcard {
 
     public void setExpiryDate(LocalDate ExpiryDate) {
         this.ExpiryDate = ExpiryDate;
+    }
+
+    public void setcardNumber(String cardNumber, int id) {
+        try {
+            String updateQuery = "UPDATE User SET cardNumber = ? WHERE userID = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, cardNumber);
+                preparedStatement.setInt(2, id);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void setcvv(String cvv, int id) {
+        try {
+            String updateQuery = "UPDATE User SET cvv = ? WHERE userID = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, cvv);
+                preparedStatement.setInt(2, id);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

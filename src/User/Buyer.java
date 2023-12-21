@@ -70,7 +70,45 @@ public class Buyer extends IUser {
                         e.printStackTrace();
                 }
         }
+        public void setLname(String Lname, int id) {
+                try {
+                        String updateQuery = "UPDATE User SET Lname = ? WHERE userID = ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                                preparedStatement.setString(1, Lname);
+                                preparedStatement.setInt(2, id);
 
+                                int rowsAffected = preparedStatement.executeUpdate();
+                        }
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
+        public void setemail(String email, int id) {
+                try {
+                        String updateQuery = "UPDATE User SET email = ? WHERE userID = ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                                preparedStatement.setString(1, email);
+                                preparedStatement.setInt(2, id);
+
+                                int rowsAffected = preparedStatement.executeUpdate();
+                        }
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
+        public void setpassword(String password, int id) {
+                try {
+                        String updateQuery = "UPDATE User SET password = ? WHERE userID = ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                                preparedStatement.setString(1, password);
+                                preparedStatement.setInt(2, id);
+
+                                int rowsAffected = preparedStatement.executeUpdate();
+                        }
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
 
 
         public Map<Integer, Map<Integer, String>> displayPendingOrders() {
