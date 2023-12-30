@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBaseConnection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/OnlineShoppingSystem?user=root&password=ZXcv1234&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String DB_URL = "";
     private static Connection connection;
 
     // Private constructor to prevent instantiation from outside
